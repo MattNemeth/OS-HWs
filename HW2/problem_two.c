@@ -1,22 +1,25 @@
 //Problem One
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 
 int main(){
 	FILE * fp1 = popen("find . -name '*.c'","r");
-	FILE * fp2 = popen("tr a-z A-Z","r");
+	FILE * fp2 = popen("tr a-z A-Z","w");
 
-	char buf[20];
-	while(fgets(buf, 20, fp1) != NULL){
-		if(fp1 == 0){
-			printf("There was an error with the popen command...\n");
-		}else{
-			printf("%s", buf);	
-		}
+	const int bufSize = 100;
+	char buf1[bufSize];
+
+	while(fgets(buf1, bufSize, fp1) != NULL){
+		fputs(buf1, fp2);
 	}
-	return 0;
+	fclose(fp1);
+	fclose(fp2);
 }
