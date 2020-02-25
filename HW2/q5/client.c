@@ -5,10 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <unistd.h>
 #include <string.h>
 #include <ctype.h>
 #include <sys/mman.h>
+#include <unistd.h>
 
 void makeupper(char* str) {
 	while (*str) {
@@ -39,15 +39,14 @@ int main(int argc, char* argv[]) {
 	}
 
 	char* str = (char *)count + sizeof(int);
+	char* line;
+	size_t len = 0;
 
 	FILE* sourceFile = fopen(argv[1], "r");
 	if (sourceFile == NULL) {
 		perror(argv[1]);
 		exit(1);
 	}
-
-	char* line;
-	size_t len = 0;
 
 	while (getline(&line, &len, sourceFile) != -1) {
 		makeupper(line);

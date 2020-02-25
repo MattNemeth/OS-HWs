@@ -31,12 +31,12 @@ int main() {
 		exit(1);
 	}
 
-	char* line = (char *)count + sizeof(int);
+	char* str = (char *)count + sizeof(int);
 	int old = *count;
 	while (1) {
 		if (old != *count) {
-			old = *count; // update the count
-			if (strcmp(line, "Stop\n") == 0) {
+			old = *count;
+			if (strcmp(str, "Stop\n") == 0) {
 				break;
 			}
 			printf("%s", str);
