@@ -1,0 +1,22 @@
+1) Show how can you avoid race conditions with the Load-Linked/Store-Conditional instruction pair.
+
+2)  Consider the following set of processes, with the length of the CPU-burst time given in milliseconds:
+
+Process	Burst Time	Priority
+P1	10	3
+P2	1	1
+P3	2	3
+P4	1	4
+P5	5	2
+The processes are assumed to have arrived in the order P1, P2, P3, P4, P5, all at time 0.
+a. Draw four Gantt charts illustrating the execution of these processes using FCFS, SJF, a nonpreemptive priority (a smaller priority number implies a higher priority), and RR (quantum = 1) scheduling.
+b. What is the turnaround time of each process for each of the scheduling algorithms in part a?
+c. What is the waiting time of each process for each of the scheduling algorithms in part a?
+d. Which of the schedules in part a results in the minimal average waiting time (over all processes)?
+
+3)  Explain why spinlocks are not appropriate for uniprocessor systems yet may be suitable for multiprocessor systems.
+
+
+4) Create two processes that write to the same shared memory area (you can use SysV shared memory or mmap() ).  Make sure that you can demonstrate repeatable race conditions.  I will suggest that in each process, you write one byte, pause 1 second (by using a loop or sleep()), then that the next byte. 
+
+Then use SysV semaphore to avoid the race conditions.
